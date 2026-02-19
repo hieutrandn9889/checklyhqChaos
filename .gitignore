@@ -1,0 +1,17 @@
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/allure-report/
+/allure-results/
+/.auth/storageState.json
+e2e/tests/resultSmartReport/smart-report.html
+e2e/tests/resultSmartReport/test-history.json
+# Playwright
+/playwright/.auth/
+.env
+.playwright-cli/
+telemetry-id
+.gemini

@@ -1,0 +1,31 @@
+{
+  "name": "playwright-check-suites",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "checkly:test": "node scripts/load-env-and-run.js \"npx cross-env CHECKLY_API_KEY=$CHECKLY_API_KEY CHECKLY_ACCOUNT_ID=$CHECKLY_ACCOUNT_ID npx checkly test\"",
+    "checkly:test:record": "node scripts/load-env-and-run.js \"npx cross-env CHECKLY_API_KEY=$CHECKLY_API_KEY CHECKLY_ACCOUNT_ID=$CHECKLY_ACCOUNT_ID npx checkly test --record\"",
+    "checkly:list": "node scripts/load-env-and-run.js \"npx cross-env CHECKLY_API_KEY=$CHECKLY_API_KEY CHECKLY_ACCOUNT_ID=$CHECKLY_ACCOUNT_ID npx checkly test --list\"",
+    "test": "npx playwright test homepage.spec.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@faker-js/faker": "^8.0.0",
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^22.1.0",
+    "allure-playwright": "^3.3.0",
+    "chalk": "^5.6.2",
+    "checkly": "^7.0.1",
+    "cross-env": "^10.1.0",
+    "dotenv-cli": "^11.0.0",
+    "playwright-smart-reporter": "^0.6.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "jiti": "^2.6.1",
+    "typescript": "^5.8.3"
+  }
+}
