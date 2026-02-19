@@ -1,6 +1,7 @@
 import { expect, Locator, Page } from '@playwright/test';
 import { STORAGE_STATE } from '../../playwright.config';
 import { text } from 'stream/consumers';
+import path from 'path';
 
 export class CommonClassPage {
   readonly page: Page;
@@ -70,13 +71,27 @@ export class CommonClassPage {
   
   async clickLocatorElement(element: string) {
     await this.withStep(`${this.uiActionPrefix}Click element: ${element}`, async () => {
-      await this.page.locator(element).click();
+      const locator = this.page.locator(element);
+      await locator.scrollIntoViewIfNeeded();
+      await this.page.evaluate(() => window.scrollBy(0, -200));
+      try {
+        await locator.click({ force: true, timeout: 3000 });
+      } catch {
+        await locator.evaluate((el) => (el as HTMLElement).click());
+      }
     });
   }
 
   async clickLocatorElementToLoadPage(element: string) {
     await this.withStep(`${this.uiActionPrefix}Click element to load page: ${element}`, async () => {
-      await this.page.locator(element).click();
+      const locator = this.page.locator(element);
+      await locator.scrollIntoViewIfNeeded();
+      await this.page.evaluate(() => window.scrollBy(0, -200));
+      try {
+        await locator.click({ force: true, timeout: 3000 });
+      } catch {
+        await locator.evaluate((el) => (el as HTMLElement).click());
+      }
       await this.waitForPageLoad();
     });
   }
@@ -325,7 +340,6 @@ export class CommonClassPage {
 
   async uploadFileData(element: string, value: string) {
     await this.withStep(`${this.uiActionPrefix}Upload file: ${value} for element: ${element}`, async () => {
-      const path = require('path')
       const fileToUpload = '/dataTest/' + value
       const absolutePath = path.resolve(process.cwd() + fileToUpload)
       await this.page.locator(element).setInputFiles(absolutePath)
