@@ -9,7 +9,7 @@ export const STORAGE_STATE = path.join(__dirname, '.auth/storageState.json');
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: "./e2e/tests",
+  testDir: "./e2e/tests/",
   /* Run tests in files in parallel */
   fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -50,7 +50,7 @@ export default defineConfig({
      */
     {
       name: "chromium",
-      testMatch: /.*\/e2e\/tests\/.*\.spec\.ts/,
+      testMatch: /.*\/e2e\/tests\/multiple-browsers\/.*\.spec\.ts/,
       use: {
         // Không sử dụng devices['Desktop Chrome'] vì có deviceScaleFactor
         browserName: 'chromium',
@@ -61,4 +61,5 @@ export default defineConfig({
       },
     },
   ],
+  globalSetup: path.resolve('./e2e/hooks/globalSetup.ts'),
 })

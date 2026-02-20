@@ -6,7 +6,7 @@
     "checkly:test": "node scripts/load-env-and-run.js \"npx cross-env CHECKLY_API_KEY=$CHECKLY_API_KEY CHECKLY_ACCOUNT_ID=$CHECKLY_ACCOUNT_ID npx checkly test\"",
     "checkly:test:record": "node scripts/load-env-and-run.js \"npx cross-env CHECKLY_API_KEY=$CHECKLY_API_KEY CHECKLY_ACCOUNT_ID=$CHECKLY_ACCOUNT_ID npx checkly test --record\"",
     "checkly:list": "node scripts/load-env-and-run.js \"npx cross-env CHECKLY_API_KEY=$CHECKLY_API_KEY CHECKLY_ACCOUNT_ID=$CHECKLY_ACCOUNT_ID npx checkly test --list\"",
-    "test": "npx playwright test homepage.spec.ts"
+    "run111": "npx playwright test e2e/tests/HomePage/home.spec.ts --project=chromium"
   },
   "keywords": [],
   "author": "",
